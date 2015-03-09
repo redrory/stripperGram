@@ -1,0 +1,92 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>My Profile</h1>
+<p>
+  <% if current_user %>
+    <%= current_user.name %>
+    <%= image_tag (current_user.image) %>
+  <% end %>
+</p>
+<% @count = 1 %>
+<% @all = [] %>
+
+  <% @ids.each do |id| %>
+    <%image_tag @client.media_item(id).images.low_resolution.url %>
+    <% @images = @client.media_likes(id)%>
+
+
+      <% @images.each do |image| %>
+
+          <% image.full_name %>
+          <% @all << image.id %>
+          <% image.id %>
+      <% end %>
+
+  <% end %>
+
+<% @count %>
+<%
+h = Hash.new { 0 }
+@all.each { |id| h[id] += 1 }
+%>
+
+<% @mvp =  h.sort_by { |name,age | age}.reverse %>
+
+<% @choice = @mvp.take(5) %>
+
+<% @choice.each do |choice|%>
+  <%= image_tag @client.user(choice.first).profile_picture %>
+  <%= choice.last %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+<h1> Following </h1>
+    <% @last_image.each do |last| %>
+    <li>
+      <%#= last.full_name %>
+      <%#= last.id %>
+    </li>
+    <% end %>
+
+
+
+
+<%#= render partial: "shared/friends", locals: {friends: @follows} %>
+
+<h1> Followers  </h1>
+<%#= render partial: "shared/friends", locals: {friends: @followed} %>
+
+<h1>Popular</h1>
+<%#= render partial: "shared/friends", locals: {friends: @media} %>
+
+<% @media.each do |m| %>
+  <% image_tag m.images.thumbnail.url %>
+  <% m.user.full_name %>
+<% end %>
+
+<ol>
+<% @mymedia.each do |liker| %>
+<li>
+
+  <%#= image_tag liker.images.thumbnail.url %>
+  <%#= liker.caption.text %>
+  <%#= liker.likes.count %>
+</li>
+<ol>
+  <% #liker.likes.data.each do |w| %>
+    <li> <%#= w.full_name %></li>
+  <% #end %>
+ </ol>
+<% end %>
+</ol>

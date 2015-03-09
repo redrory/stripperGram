@@ -1,0 +1,110 @@
+<p>
+  <% if current_user %>
+    <%#= current_user.name %>
+    <%#= image_tag (current_user.image) %>
+  <% end %>
+</p>
+<% @count = 1 %>
+<% @all = [] %>
+
+  <% @ids.each do |id| %>
+
+    <% @images = @client.media_likes(id)%>
+      <% @images.each do |image| %>
+          <% @all << image.id %>
+      <% end %>
+  <% end %>
+
+<% @count %>
+
+<%
+h = Hash.new { 0 }
+@all.each { |id| h[id] += 1 }
+%>
+
+<% @mvp =  h.sort_by { |name,age | age}.reverse %>
+<% @choice = @mvp.take(1) %>
+
+<div id="mvps">
+  <ol>
+  <div class="container-fluid">
+    <div class="row">
+      <% @choice.each do |choice|%>
+        <% id = @client.user(choice.first) %>
+        <div id="life">
+        <li>
+            <div id="image">
+              <%= link_to (image_tag id.profile_picture, :class => "img-circle"), "http://www.instagram.com/#{id.username}" %>
+            </div>
+
+
+            <div id="info" >
+                <div id ="name">Name: <%= link_to id.full_name, "http://www.instagram.com/#{id.username}" %> </div>
+                <div id ="likes">Likes: <%= choice.last %></div>
+            </div>
+
+            </li>
+            </div>
+            <div style="clear:both"></div>
+      <% end %>
+    </div>
+  </div>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <% if current_user %>
+    <%#= current_user.name %>
+    <%#= image_tag (current_user.image) %>
+  <% end %>
+</p>
+<% @count = 1 %>
+<% @all = [] %>
+
+  <% @ids.each do |id| %>
+    <%image_tag @client.media_item(id).images.low_resolution.url %>
+    <% @images = @client.media_likes(id)%>
+      <% @images.each do |image| %>
+          <% image.full_name %>
+          <% @all << image.id %>
+          <% image.id %>
+      <% end %>
+  <% end %>
+
+<% @count %>
+
+<%
+h = Hash.new { 0 }
+@all.each { |id| h[id] += 1 }
+%>
+
+<% @mvp =  h.sort_by { |name,age | age}.reverse %>
+
+<% @choice = @mvp.take(5) %>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <% @choice.each do |choice|%>
+      <% id = @client.user(choice.first) %>
+      <div id="user">
+        <div class="pull-left"> <%= image_tag id.profile_picture %> </div>
+        <div class="pull-left"> <%= id.full_name%> </div>
+        <div class="pull-left"> <%= choice.last %> </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

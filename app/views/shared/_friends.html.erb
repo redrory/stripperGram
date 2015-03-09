@@ -1,0 +1,17 @@
+<table class="table">
+  <tr>
+    <td>Name</td>
+    <td>Photo</td>
+    <td>Following</td>
+    <td>Followers</td>
+  </tr>
+
+  <% friends.each do |t| %>
+    <tr>
+      <td> <%= t.username %> </td>
+      <td><%= image_tag (t.profile_picture) %></td>
+      <td><%#= t.friends_count %></td>
+      <td> <%#= t.followers_count %></td>
+    </tr>
+  <% end %>
+</table>
