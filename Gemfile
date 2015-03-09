@@ -3,8 +3,17 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+group :development do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+end
+
+group :production do
+  # Use sqlite3 as the database for Active Record
+  gem 'pg'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -48,3 +57,4 @@ gem 'omniauth-instagram', '~> 1.0.1'
 gem 'annotate', '~> 2.6.5'
 gem 'instagram', '~> 1.1.3'
 # gem 'rack-mini-profiler'
+gem 'rails_12factor', group: :production
