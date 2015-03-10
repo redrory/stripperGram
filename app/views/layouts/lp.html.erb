@@ -45,7 +45,7 @@
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <%= link_to "Sign in with Instagram", login_path, :class => "btn btn-default btn-lg network-name" %>
+                                <%= link_to "Sign in with Instagram", login_path, :class => "btn btn-default btn-lg network-name",:data => { :disable_with => "<i class='fa fa-cog fa-spin'></i> Processing..." }  %>
                                 <!-- <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a> -->
 
                             </li>

@@ -54,6 +54,7 @@ end
 
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'omniauth-instagram', '~> 1.0.1'
+gem 'font-awesome-sass'
 gem 'annotate', '~> 2.6.5'
 gem 'instagram', '~> 1.1.3'
 # gem 'rack-mini-profiler'

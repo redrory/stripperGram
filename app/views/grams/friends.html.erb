@@ -23,7 +23,7 @@ h = Hash.new { 0 }
 %>
 
 <% @mvp =  h.sort_by { |name,age | age}.reverse %>
-<% @choice = @mvp.take(3) %>
+<% @choice = @mvp.take(5) %>
 
 <div id="mvps">
   <ol>
@@ -37,10 +37,10 @@ h = Hash.new { 0 }
               <%= link_to (image_tag id.profile_picture, :class => "img-circle"), "http://www.instagram.com/#{id.username}" %>
             </div>
 
-
             <div id="info" >
                 <div id ="name">Name: <%= link_to id.full_name, "http://www.instagram.com/#{id.username}" %> </div>
-                <div id ="likes">Likes: <%= choice.last %></div>
+
+                <div id ="likes">Likes: <span class="badge"><%= choice.last %></span></div>
             </div>
 
             </li>

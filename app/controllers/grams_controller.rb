@@ -19,10 +19,18 @@ class GramsController < ApplicationController
     # @last_image = @client.media_likes(@test_id)
   end
 
+  def mvp
+    @client = Instagram.client(:access_token => current_user.token)
+  end
+
   def friends
     @client = Instagram.client(:access_token => current_user.token)
-    @mymediaR = @client.user_recent_media.take(5)
+    @mymediaR = @client.user_recent_media.take(15)
     @ids = @mymediaR.map(&:id)
+  end
+
+  def about
+
   end
 
   # GET /grams/1

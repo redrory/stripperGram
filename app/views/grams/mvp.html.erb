@@ -1,0 +1,17 @@
+
+<p>
+  <% if current_user %>
+    <%= image_tag (current_user.image) %>
+    <%= current_user.name %>
+  <% end %>
+  <blockquote>
+  <p>Show me your friends and I’ll show you your Instagram MVP</p>
+  <small>Rory <cite title="Source Title">IG MVP</cite></small>
+</blockquote>
+</p>
+
+<div id="mvp_button">
+<%= link_to 'Find your MVPs', friends_path, class: "btn btn-success btn-lg",:data => { :disable_with => "<i class='fa fa-spinner fa-spin'></i> Processing..." } %>
+
+</div>
+

@@ -4,12 +4,12 @@ class SessionsController < ApplicationController
     # raise :test
     @user = User.find_or_create_from_auth_hash(auth_hash)
     session[:user_id] = @user.id
-    redirect_to friends_path
+    redirect_to home_path
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path
+    redirect_to root_url
   end
 
   protected
