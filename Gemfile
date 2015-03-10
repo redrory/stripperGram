@@ -59,3 +59,4 @@ gem 'annotate', '~> 2.6.5'
 gem 'instagram', '~> 1.1.3'
 # gem 'rack-mini-profiler'
 gem 'rails_12factor', group: :production
+gem 'figaro'
