@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/instagram', to: 'sessions#create', as: 'login'
-  get 'friends', to: 'grams#friends'
+  get 'photos', to: 'grams#photos'
   get 'home', to: 'grams#mvp'
   get '/logout', to: 'sessions#destroy'
 

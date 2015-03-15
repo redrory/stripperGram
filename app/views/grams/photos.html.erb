@@ -1,0 +1,21 @@
+<p>
+<div class="well well-sm">
+  Poppin' based on the last 15 photos.
+</div>
+</p>
+<% @count = 1 %>
+<% @all = [] %>
+
+<p> ID: <%= @location.inspect %></p>
+
+<% photo = @recent_photos.first %>
+
+<%= image_tag photo.images.low_resolution.url %>
+<%= image_tag photo.user.username %>
+<%= image_tag photo.likes.count %>
+
+<ol>
+  <% @recent_photos.each do |photo| %>
+   <li><%#= photo.inspect %></li>
+  <% end %>
+</ol>

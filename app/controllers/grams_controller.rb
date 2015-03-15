@@ -23,10 +23,11 @@ class GramsController < ApplicationController
     @client = Instagram.client(:access_token => current_user.token)
   end
 
-  def friends
+  def photos
     @client = Instagram.client(:access_token => current_user.token)
-    @mymediaR = @client.user_recent_media.take(15)
-    @ids = @mymediaR.map(&:id)
+    @location = @client.location_search("4e7c11c352b1f8504bd5ff2f").first.id
+    @recent_photos = @client.location_recent_media(@location)
+    # @ids = @photos.map(&:id)
   end
 
   def about
